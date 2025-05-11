@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +18,7 @@
             background-color: #fde7f0; /* Softer pink background */
             padding: 20px;
             box-sizing: border-box;
-            overflow-x: hidden;/* To prevent scrollbars from hearts */
+            overflow-x: hidden; /* To prevent scrollbars from hearts */
         }
 
         #hearts-raining-area {
@@ -66,21 +66,8 @@
             opacity: 0;
             transform: translateY(30px) scale(0.95);
             animation: fadeInSlideUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s forwards;
-	    margin-bottom: 40px;
+            margin-bottom: 50px;
         }
-
-	     #ad-container {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 380px;
-            height: 60px;
-            z-index: 10;
-            background: transparent;
-            border-radius: 5px;
-            overflow: hidden;
-	     }
 
         @keyframes fadeInSlideUp {
             to {
@@ -113,6 +100,19 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+ #ad-container {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 380px;
+            height: 60px;
+            z-index: 10;
+            background: transparent;
+            border-radius: 5px;
+            overflow: hidden;
         }
 
         .wish-text {
@@ -176,7 +176,7 @@
         
         <h1>Happy Mother's Day!</h1>
         
-        <p class="wish-text">মা, তুমি পৃথিবীর সেরা মা! ❤️<br>তোমাদের ভালোবাসা এবং আশীর্বাদ সবসময় আমার সাথে আছে।</p>
+       <p class="wish-text">মা, তুমি পৃথিবীর সেরা মা! ❤️<br>তোমাদের ভালোবাসা এবং আশীর্বাদ সবসময় আমার সাথে আছে।</p>
         
         <!-- Button ab bhi <button> hai, par click event sirf WhatsApp kholega -->
         <button id="whatsapp-share-btn" class="share-button">
@@ -184,18 +184,19 @@
         </button>
         <!-- fallback-share-area div yahan se hata diya gaya hai -->
     </div>
+
   <div id="ad-container">
-        <script type="text/javascript">
-            atOptions = {
-                'key' : '2f65c003c8bb6964b2e0278a6e771702',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-            };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/2f65c003c8bb6964b2e0278a6e771702/invoke.js"></script>
-  </div>
+       <script type="text/javascript">
+	atOptions = {
+		'key' : 'b9424821c79ca201632a66060fcdf95c',
+		'format' : 'iframe',
+		'height' : 60,
+		'width' : 468,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/b9424821c79ca201632a66060fcdf95c/invoke.js"></script>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -258,13 +259,3 @@
     </script>
 </body>
 </html>
-<script type="text/javascript">
-	atOptions = {
-		'key' : 'b9424821c79ca201632a66060fcdf95c',
-		'format' : 'iframe',
-		'height' : 60,
-		'width' : 468,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/b9424821c79ca201632a66060fcdf95c/invoke.js"></script>
