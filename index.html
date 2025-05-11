@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Mother's Day!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #fde7f0; /* Softer pink background */
+            padding: 20px;
+            box-sizing: border-box;
+            overflow: hidden; /* To prevent scrollbars from hearts */
+        }
+
+        #hearts-raining-area {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .heart {
+            position: absolute;
+            top: -50px;
+            font-size: 20px;
+            color: #ff7dac;
+            user-select: none;
+            animation: fall linear infinite;
+            opacity: 0.8;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0vh) rotate(0deg);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(105vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            background: linear-gradient(135deg, #ffffff 0%, #fff6f9 100%);
+            padding: 30px 35px;
+            border-radius: 20px;
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12), 0 7px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            animation: fadeInSlideUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s forwards;
+        }
+
+        @keyframes fadeInSlideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .mother-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            border: 4px solid #ffb3c6;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #e91e63;
+            margin-bottom: 15px;
+            font-size: 2.8em;
+            opacity: 0;
+            transform: translateY(15px);
+            animation: textPopIn 0.7s ease-out 0.8s forwards;
+        }
+        
+        @keyframes textPopIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .wish-text {
+            color: #444;
+            font-size: 1.15em;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: textPopIn 0.7s ease-out 1s forwards;
+        }
+
+        .share-button { /* Yeh class ab WhatsApp button ke liye hai */
+            display: inline-block;
+            background: linear-gradient(45deg, #25D366, #128C7E); /* WhatsApp gradient */
+            color: white;
+            padding: 14px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .share-button:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+        }
+        
+        .share-button:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 25px 20px;
+            }
+            h1 {
+                font-size: 2.3em;
+            }
+            .wish-text {
+                font-size: 1em;
+            }
+            .share-button {
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="hearts-raining-area"></div>
+
+    <div class="container">
+        <img src="mother.gif?auto=compress&cs=tinysrgb&w=400&h=400&dpr=1" alt="Mother's Day Celebration" class="mother-image">
+        <!-- Aap upar image ka URL apni pasand ki image se badal sakte hain -->
+        
+        <h1>Happy Mother's Day!</h1>
+        
+        <p class="wish-text">মা, তুমি পৃথিবীর সেরা মা! ❤️<br>তোমাদের ভালোবাসা এবং আশীর্বাদ সবসময় আমার সাথে আছে।</p>
+        
+        <!-- Button ab bhi <button> hai, par click event sirf WhatsApp kholega -->
+        <button id="whatsapp-share-btn" class="share-button">
+            Share Dil Se ❤️
+        </button>
+        <!-- fallback-share-area div yahan se hata diya gaya hai -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Falling Hearts Animation ---
+            const heartsArea = document.getElementById('hearts-raining-area');
+            const heartEmojis = ['❤️', '💖', '💕', '💗', '💓', '💞'];
+
+            function createHeart() {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                const randomEmoji = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+                heart.innerHTML = randomEmoji;
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = (Math.random() * 4 + 3) + 's';
+                heart.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                heart.style.opacity = Math.random() * 0.5 + 0.4;
+                heart.style.animationDelay = Math.random() * 2 + 's';
+                heartsArea.appendChild(heart);
+                heart.addEventListener('animationend', () => {
+                    heart.remove();
+                });
+            }
+            for(let i = 0; i < 20; i++) {
+                setTimeout(createHeart, Math.random() * 2000);
+            }
+            setInterval(createHeart, 500);
+
+            // --- Share Functionality (WhatsApp Only) ---
+            const shareButton = document.getElementById('whatsapp-share-btn'); // ID badal di hai
+
+            const shareText = 'माँ के लिए यह प्यारा सा Mother\'s Day विश देखो! ❤️';
+            
+            // Function to get the page URL for sharing
+            function getPageUrlForSharing() {
+                let pageUrl = window.location.href;
+                // Only include http/https URLs in the message
+                if (pageUrl.startsWith('http')) {
+                    return " " + pageUrl;
+                }
+                return ""; // Return empty if it's a local file (file:///)
+            }
+
+            if (shareButton) {
+                shareButton.addEventListener('click', function(event) {
+                    // event.preventDefault(); // Not strictly necessary for a <button> not inside a form
+                    console.log("Share Dil Se button clicked. Opening WhatsApp...");
+
+                    const pageLinkSuffix = getPageUrlForSharing();
+                    const message = shareText + pageLinkSuffix;
+                    
+                    const whatsappUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(message);
+
+                    // Open WhatsApp in a new tab/window
+                    window.open(whatsappUrl, '_blank');
+                });
+            } else {
+                console.error("Share button #whatsapp-share-btn not found!");
+            }
+        });
+    </script>
+</body>
+</html>
