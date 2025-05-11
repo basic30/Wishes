@@ -18,7 +18,7 @@
             background-color: #fde7f0; /* Softer pink background */
             padding: 20px;
             box-sizing: border-box;
-            overflow: hidden; /* To prevent scrollbars from hearts */
+            overflow-x: hidden;/* To prevent scrollbars from hearts */
         }
 
         #hearts-raining-area {
@@ -66,7 +66,21 @@
             opacity: 0;
             transform: translateY(30px) scale(0.95);
             animation: fadeInSlideUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) 0.3s forwards;
+	    margin-bottom: 40px;
         }
+
+	     #ad-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 380px;
+            height: 60px;
+            z-index: 10;
+            background: transparent;
+            border-radius: 5px;
+            overflow: hidden;
+	     }
 
         @keyframes fadeInSlideUp {
             to {
@@ -76,7 +90,7 @@
         }
 
         .mother-image {
-            max-width: 100%;
+            max-width: 90%;
             height: auto;
             border-radius: 15px;
             margin-bottom: 25px;
@@ -170,6 +184,18 @@
         </button>
         <!-- fallback-share-area div yahan se hata diya gaya hai -->
     </div>
+  <div id="ad-container">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '2f65c003c8bb6964b2e0278a6e771702',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/2f65c003c8bb6964b2e0278a6e771702/invoke.js"></script>
+  </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
